@@ -20,7 +20,7 @@ namespace WebApiDemo.Controllers
         /// <param name="encKey">加密金鑰</param>
         /// <param name="rawText">明文字串</param>
         /// <returns>加密字串</returns>
-        [HttpPost, Route("api/codec/EncryptString")]
+        [HttpPost]
         [Consumes("application/x-www-form-urlencoded")]
         public byte[] EncryptString([FromForm]string encKey, [FromForm]string rawText)
         {

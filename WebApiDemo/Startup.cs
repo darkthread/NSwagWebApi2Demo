@@ -24,6 +24,7 @@ namespace WebApiDemo
                 {
                     document.Info.Title = "WebAPI 範例";
                 };
+                
                 //加入Api Key定義
                 settings.GeneratorSettings.DocumentProcessors.Add(new SecurityDefinitionAppender("ApiKey", new OpenApiSecurityScheme()
                 {
@@ -34,7 +35,6 @@ namespace WebApiDemo
                 }));
                 //REF: https://github.com/RicoSuter/NSwag/issues/1304
                 settings.GeneratorSettings.OperationProcessors.Add(new OperationSecurityScopeProcessor("ApiKey"));
-
             });
             app.UseWebApi(config);
             config.MapHttpAttributeRoutes();
