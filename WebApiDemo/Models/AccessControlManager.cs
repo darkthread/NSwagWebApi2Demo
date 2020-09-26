@@ -42,7 +42,6 @@ namespace WebApiDemo.Models
             string apiClientId =
                  (ApiKeys.ContainsKey(apiKey) && ApiKeys[apiKey].Contains(ipAddress)) ? apiKey : null;
 
-            if (apiClientId == null) return null;
             //加入Cache減少查詢次數
             MemoryCache.Default.Add(cacheKey, apiClientId, new CacheItemPolicy
             {
