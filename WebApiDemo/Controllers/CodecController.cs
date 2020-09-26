@@ -10,6 +10,8 @@ namespace WebApiDemo.Controllers
     /// 加解密功能
     /// </summary>
     [MvcStyleBinding]
+    [ApiKeyAuth]
+    [Authorize]
     public class CodecController : ApiController
     {
         /// <summary>

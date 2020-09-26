@@ -24,6 +24,17 @@ namespace WebApiDemo
                 {
                     document.Info.Title = "WebAPI 範例";
                 };
+                //加入Api Key定義
+                settings.GeneratorSettings.DocumentProcessors.Add(new SecurityDefinitionAppender("ApiKey", new SwaggerSecurityScheme()
+                {
+                    Type = SwaggerSecuritySchemeType.ApiKey,
+                    Name = "X-Api-Key",
+                    Description = "請填入配發之 API Key",
+                    In = SwaggerSecurityApiKeyLocation.Header
+                }));
+                //REF: https://github.com/RicoSuter/NSwag/issues/1304
+                settings.GeneratorSettings.OperationProcessors.Add(new OperationSecurityScopeProcessor("ApiKey"));
+
             });
             app.UseWebApi(config);
             config.MapHttpAttributeRoutes();
