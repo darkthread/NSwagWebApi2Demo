@@ -3,7 +3,7 @@ using NSwag.AspNet.Owin;
 using Owin;
 using System.Web.Http;
 using NSwag;
-using NSwag.SwaggerGeneration.Processors.Security;
+using NSwag.Generation.Processors.Security;
 
 [assembly: OwinStartup(typeof(WebApiDemo.Startup))]
 
@@ -25,12 +25,12 @@ namespace WebApiDemo
                     document.Info.Title = "WebAPI 範例";
                 };
                 //加入Api Key定義
-                settings.GeneratorSettings.DocumentProcessors.Add(new SecurityDefinitionAppender("ApiKey", new SwaggerSecurityScheme()
+                settings.GeneratorSettings.DocumentProcessors.Add(new SecurityDefinitionAppender("ApiKey", new OpenApiSecurityScheme()
                 {
-                    Type = SwaggerSecuritySchemeType.ApiKey,
+                    Type = OpenApiSecuritySchemeType.ApiKey,
                     Name = "X-Api-Key",
                     Description = "請填入配發之 API Key",
-                    In = SwaggerSecurityApiKeyLocation.Header
+                    In = OpenApiSecurityApiKeyLocation.Header
                 }));
                 //REF: https://github.com/RicoSuter/NSwag/issues/1304
                 settings.GeneratorSettings.OperationProcessors.Add(new OperationSecurityScopeProcessor("ApiKey"));
